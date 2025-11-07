@@ -13,6 +13,9 @@
 #include <unistd.h>
 #include <cstring>
 #include <string>
+#include <vector>
+#include <chrono>
+#endif
 
 std::string getClipboardTextX11() {
     std::cerr << "=== Querying clipboard ===" << std::endl;
@@ -255,10 +258,10 @@ int main() {
     const bool isWayland = (std::getenv("WAYLAND_DISPLAY") != nullptr);
 
     if (isWayland) {
-        if (exec("wl-paste --no-newline", text) && !text.empty()) {
-          std::cerr << "exec("wl-paste --no-newline " << std::endl;
+         // if (exec("wl-paste --no-newline", text) && !text.empty()) {
+          std::cerr << "exec(wl-paste --no-newline " << std::endl;
             return 0;
-        }
+        //}
     }
 
     // fallback to X11
